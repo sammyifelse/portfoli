@@ -2,49 +2,38 @@
 
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
-import BinaryStreamAnimation from './BinaryStreamAnimation'; 
 import { motion } from 'framer-motion';
-
-// This tells TypeScript that "ShuffleText" exists globally from our script tag
-declare const ShuffleText: any;
+import TextType from './TextType'; // The new typing animation
+import BinaryStreamAnimation from './BinaryStreamAnimation'; // The animation for the right side
 
 export function Hero() {
-  const heroTitleRef = useRef(null);
-
-  useEffect(() => {
-    if (heroTitleRef.current && typeof ShuffleText !== 'undefined') {
-      const shuffle = new ShuffleText(heroTitleRef.current);
-      shuffle.start();
-    }
-  }, []);
-
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-slate-900 dark:to-slate-800 z-0 engineering-pattern"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         
+        {/* 1. RESTORED THE TWO-COLUMN LAYOUT */}
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
 
-          {/* --- Text Content Wrapper --- */}
+          {/* --- Text Content Wrapper (aligned left on large screens) --- */}
           <motion.div 
             className="text-center lg:text-left max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <motion.h1 
-              ref={heroTitleRef}
-              id="hero-title"
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            >
-              Samarjit Thakuria
-            </motion.h1>
-
+            {/* Using the new TextType animation for your name */}
+            <TextType 
+              as="h1"
+              text={["Samarjit Thakuria"]}
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-blitz"
+              typingSpeed={100}
+              loop={false}
+              showCursor={false}
+            />
+            
+            {/* The static subtitle remains below */}
             <motion.p 
               className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8"
               initial={{ opacity: 0 }}
@@ -56,7 +45,9 @@ export function Hero() {
             
             <motion.div 
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"
-              // ... motion props
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
             >
               <Button asChild size="lg" className="bg-portfolio-primary hover:bg-portfolio-secondary text-white">
                 <Link href="#projects">View Projects</Link>
@@ -68,7 +59,9 @@ export function Hero() {
             
             <motion.div 
               className="flex justify-center lg:justify-start space-x-6"
-              // ... motion props
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
             >
               <Link href="https://github.com/sammyifelse" target="_blank" rel="noopener noreferrer" className="text-gray-700 dark:text-gray-300 hover:text-portfolio-primary dark:hover:text-portfolio-secondary transition-colors">
                 <span className="sr-only">GitHub</span>
@@ -85,7 +78,7 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* --- Animation Wrapper --- */}
+          {/* --- Animation Wrapper on the right --- */}
           <div className="hidden lg:block">
             <BinaryStreamAnimation /> 
           </div>
