@@ -11,8 +11,8 @@ const projectsData = [
     title: " ResumePard - AI-Powered Resume Matcher",
     year: "2025",
     description: "AI-powered tool for recruiters to parse, match, and rank resumes against job descriptions using NLP.",
-    liveUrl: "", 
-    githubUrl: "", 
+    liveUrl: "https://drive.google.com/file/d/1b5fevcz9_SEwKjH_-601MxXog04ld788/view?usp=sharing", 
+    githubUrl: "https://github.com/sammyifelse/ResumePard", 
   },
   {
     title: "Healthcare SaaS Platform",
