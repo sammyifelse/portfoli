@@ -78,11 +78,18 @@ export function Contact() {
         email: '',
         message: ''
       });
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to send email:', error);
+      const errorMessage = error?.text || error?.message || 'Failed to send message. Please try again.';
+      console.error('Error details:', {
+        text: error?.text,
+        message: error?.message,
+        status: error?.status,
+        full: error
+      });
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {

@@ -8,6 +8,13 @@ import Link from 'next/link';
 // 1. Define your project data here
 const projectsData = [
     {
+    title: "FraudGuard – ML Powered Transaction Security",
+    year: "2025",
+    description: "Next-generation fraud analysis platform designed for financial teams. Effortlessly upload transaction files, uncover hidden risks, and receive automated fraud scores along with smart explanations for every flagged entry. Track patterns, visualize insights, and accelerate investigations with a seamless, privacy-first workflow.",
+    liveUrl: "https://drive.google.com/file/d/1DLl2B10FYEwHDLHPzCSmEsKMyEArxGWK/view?usp=sharing", 
+    githubUrl: "https://github.com/sammyifelse/hackth", 
+  },
+    {
     title: " ResumePard - AI-Powered Resume Matcher",
     year: "2025",
     description: "AI-powered tool for recruiters to parse, match, and rank resumes against job descriptions using NLP.",
